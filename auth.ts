@@ -1,7 +1,22 @@
 import NextAuth from "next-auth";
-import GitHub from "next-auth/providers/github";
-import Google from "next-auth/providers/google";
+import GithubProvider from "next-auth/providers/github";
 
-export const { auth, handlers, signIn, signOut } = NextAuth({
-  providers: [GitHub, Google],
-});
+const githubId = process.env.AUTH_GITHUB_ID;
+const githubSecret = process.env.AUTH_GITHUB_SECRET;
+
+if (!githubId || !githubSecret) {
+  throw new Error(
+    "githubId or githubSecret are not defined in the environnement"
+  );
+}
+
+export const authOptions = {
+  providers: [
+    GithubProvider({
+      clientId: githubId,
+      clientSecret: githubSecret,
+    }),
+  ],
+};
+
+export default NextAuth(authOptions);

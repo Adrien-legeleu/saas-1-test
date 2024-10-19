@@ -2,13 +2,8 @@
 
 import { Cursor, Typewriter } from "react-simple-typewriter";
 import ButtonProvider from "./components/ButtonProvider";
-import { useSession } from "next-auth/react";
 
 export default function Home() {
-  const { data: session } = useSession();
-
-  console.log(session);
-
   return (
     <section className="h-screen w-full flex flex-col items-center gap-12 justify-center">
       <h1 className="text-4xl md:text-6xl font-bold mb-2 tracking-wider flex items-center">
