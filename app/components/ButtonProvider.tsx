@@ -1,12 +1,25 @@
-import { Button } from "@/components/ui/button";
 import { signIn } from "next-auth/react";
-import React from "react";
-
+import { Button } from "@/components/ui/button";
+import { Github, Mail } from "lucide-react";
 export default function ButtonProvider() {
   return (
-    <div className="flex flex-col space-y-4">
-      <Button onClick={() => signIn("google")}>Continuer avec Google</Button>
-      <Button onClick={() => signIn("github")}>Continuer avec GitHub</Button>
-    </div>
+    <>
+      <div className="flex flex-col gap-4">
+        <Button
+          onClick={() => signIn("mail")}
+          className="flex items-center gap-2"
+        >
+          <Mail />
+          <span>Continuer avec Google</span>
+        </Button>
+        <Button
+          onClick={() => signIn("github")}
+          className="flex items-center gap-2"
+        >
+          {/* <Github /> */}
+          <span>Continuer avec GitHub</span>
+        </Button>
+      </div>
+    </>
   );
 }
